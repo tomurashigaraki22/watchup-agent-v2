@@ -39,7 +39,7 @@ Thank you for your interest in contributing to the WatchUp Agent! This document 
 ### Local Development
 ```bash
 # Clone the repository
-git clone https://github.com/watchup/watchup-agent.git
+git clone https://github.com/tomurashigaraki22/watchup-agent-v2.git
 cd watchup-agent
 
 # Install dependencies

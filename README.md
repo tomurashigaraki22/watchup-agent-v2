@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Go Version](https://img.shields.io/badge/Go-1.19+-blue.svg)](https://golang.org)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/watchup/watchup-agent)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/tomurashigaraki22/watchup-agent-v2)
 
 A production-grade, open source Go agent that collects comprehensive system metrics and sends them to the WatchUp monitoring platform. The agent uses secure device linking authentication and runs as a lightweight background service.
 
@@ -47,7 +47,7 @@ iwr -useb https://raw.githubusercontent.com/watchup/watchup-agent/main/install.p
 #### Option 1: Download Pre-built Binary
 
 1. **Download the latest release** for your platform:
-   - Visit [Releases](https://github.com/watchup/watchup-agent/releases/latest)
+   - Visit [Releases](https://github.com/tomurashigaraki22/watchup-agent-v2/releases/latest)
    - Download the appropriate binary:
      - Linux: `watchup-agent-linux-amd64`
      - macOS: `watchup-agent-darwin-amd64` or `watchup-agent-darwin-arm64`
@@ -92,7 +92,7 @@ iwr -useb https://raw.githubusercontent.com/watchup/watchup-agent/main/install.p
 
 2. **Clone and build**:
    ```bash
-   git clone https://github.com/watchup/watchup-agent.git
+   git clone https://github.com/tomurashigaraki22/watchup-agent-v2.git
    cd watchup-agent
    go build -o watchup-agent cmd/agent/main.go cmd/agent/setup.go
    ```
@@ -403,7 +403,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Deployment Guide**: [DEPLOYMENT.md](DEPLOYMENT.md)
 - **Architecture**: [OPEN_SOURCE_ARCHITECTURE.md](OPEN_SOURCE_ARCHITECTURE.md)
 - **Contributing**: [CONTRIBUTING.md](CONTRIBUTING.md)
-- **Issues**: [GitHub Issues](https://github.com/watchup/watchup-agent/issues)
+- **Issues**: [GitHub Issues](https://github.com/tomurashigaraki22/watchup-agent-v2/issues)
 
 ## 🙋 Support
 

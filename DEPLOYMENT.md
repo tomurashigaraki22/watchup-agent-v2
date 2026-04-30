@@ -72,7 +72,7 @@ cd /opt/watchup-agent
 
 # Download latest release
 LATEST_VERSION=$(curl -s https://api.github.com/repos/watchup/watchup-agent/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-curl -fsSL "https://github.com/watchup/watchup-agent/releases/download/${LATEST_VERSION}/watchup-agent-linux-amd64" -o watchup-agent
+curl -fsSL "https://github.com/tomurashigaraki22/watchup-agent-v2/releases/download/${LATEST_VERSION}/watchup-agent-linux-amd64" -o watchup-agent
 
 # Make executable
 chmod +x watchup-agent
@@ -146,7 +146,7 @@ latency_checks:
 sudo tee /etc/systemd/system/watchup-agent.service > /dev/null <<EOF
 [Unit]
 Description=WatchUp Monitoring Agent
-Documentation=https://github.com/watchup/watchup-agent
+Documentation=https://github.com/tomurashigaraki22/watchup-agent-v2
 After=network-online.target
 Wants=network-online.target
 
@@ -636,6 +636,6 @@ spec:
 
 For deployment issues:
 - **Documentation**: Check this guide and README.md
-- **Issues**: https://github.com/watchup/watchup-agent/issues
+- **Issues**: https://github.com/tomurashigaraki22/watchup-agent-v2/issues
 - **Community**: GitHub Discussions
 - **Security**: security@watchup.com
