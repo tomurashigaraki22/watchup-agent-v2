@@ -1,0 +1,68 @@
+# WatchUp Agent Configuration
+# Copy this file to config.yaml and customize as needed
+
+# Unique identifier for this server/agent instance
+server_id: "web-prod-01"
+
+# Backend API endpoint
+endpoint: "https://v2-server.watchup.site"
+
+# How often to collect and send metrics (examples: 5s, 30s, 1m, 5m)
+interval: 5s
+
+# Which metrics to collect
+metrics:
+  cpu: true
+  memory: true
+  disk: true
+  network: true
+
+# Authentication settings
+auth:
+  # Where to store the authentication token
+  token_file: "./agent_token"
+
+# Which metrics to collect
+metrics:
+  cpu: true
+  memory: true
+  disk: true
+  network: true
+  connections: false  # Network connections monitoring (optional)
+
+# Authentication settings
+auth:
+  # Where to store the authentication token
+  token_file: "./agent_token"
+
+# Port monitoring (Phase 4 - Optional)
+ports:
+  - port: 80
+    name: "HTTP"
+    host: "localhost"
+    timeout: "5s"
+  - port: 443
+    name: "HTTPS"
+    host: "localhost"
+    timeout: "5s"
+  - port: 5432
+    name: "PostgreSQL"
+    host: "localhost"
+    timeout: "3s"
+
+# Latency checks (Phase 4 - Optional)
+latency_checks:
+  - host: "8.8.8.8"
+    name: "Google DNS"
+    type: "tcp"
+    port: 53
+    timeout: "3s"
+  - host: "https://www.google.com"
+    name: "Google HTTP"
+    type: "http"
+    timeout: "10s"
+  - host: "v2-server.watchup.site"
+    name: "Watchup API"
+    type: "tcp"
+    port: 443
+    timeout: "5s"
