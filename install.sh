@@ -1,7 +1,7 @@
 #!/bin/bash
 # WatchUp Agent Installation Script
 # Supports: Linux and macOS
-# Usage: curl -fsSL https://raw.githubusercontent.com/watchup/watchup-agent/main/install.sh | bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/tomurashigaraki22/watchup-agent-v2/main/install.sh | bash
 
 set -e
 

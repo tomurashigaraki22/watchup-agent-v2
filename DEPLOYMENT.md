@@ -18,7 +18,7 @@ This guide covers deploying the WatchUp Agent in various environments and scenar
 
 **Linux/macOS**:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/watchup/watchup-agent/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tomurashigaraki22/watchup-agent-v2/main/install.sh | bash
 ```
 
 **Windows**:
@@ -42,7 +42,7 @@ SERVERS=(
 
 for SERVER in "${SERVERS[@]}"; do
     echo "Deploying to $SERVER..."
-    ssh "$SERVER" 'curl -fsSL https://raw.githubusercontent.com/watchup/watchup-agent/main/install.sh | bash'
+    ssh "$SERVER" 'curl -fsSL https://raw.githubusercontent.com/tomurashigaraki22/watchup-agent-v2/main/install.sh | bash'
 done
 ```
 
@@ -298,7 +298,7 @@ docker logs -f watchup-agent
 # User Data script for EC2 instance
 
 # Install agent
-curl -fsSL https://raw.githubusercontent.com/watchup/watchup-agent/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tomurashigaraki22/watchup-agent-v2/main/install.sh | bash
 
 # Configure with instance metadata
 INSTANCE_ID=$(ec2-metadata --instance-id | cut -d " " -f 2)
@@ -316,7 +316,7 @@ sudo systemctl enable watchup-agent
 # Startup script for GCE instance
 
 # Install agent
-curl -fsSL https://raw.githubusercontent.com/watchup/watchup-agent/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tomurashigaraki22/watchup-agent-v2/main/install.sh | bash
 
 # Configure with instance metadata
 INSTANCE_NAME=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/name)
@@ -334,7 +334,7 @@ sudo systemctl enable watchup-agent
 # Custom script extension for Azure VM
 
 # Install agent
-curl -fsSL https://raw.githubusercontent.com/watchup/watchup-agent/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tomurashigaraki22/watchup-agent-v2/main/install.sh | bash
 
 # Configure with instance metadata
 VM_NAME=$(curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/name?api-version=2021-02-01&format=text")
@@ -352,7 +352,7 @@ sudo systemctl enable watchup-agent
 # Cloud-init script for DigitalOcean
 
 # Install agent
-curl -fsSL https://raw.githubusercontent.com/watchup/watchup-agent/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tomurashigaraki22/watchup-agent-v2/main/install.sh | bash
 
 # Configure
 DROPLET_NAME=$(curl -s http://169.254.169.254/metadata/v1/hostname)
@@ -422,7 +422,7 @@ resource "null_resource" "install_watchup_agent" {
   
   provisioner "remote-exec" {
     inline = [
-      "curl -fsSL https://raw.githubusercontent.com/watchup/watchup-agent/main/install.sh | bash",
+      "curl -fsSL https://raw.githubusercontent.com/tomurashigaraki22/watchup-agent-v2/main/install.sh | bash",
       "sed -i 's/server_id: \"\"/server_id: \"${var.server_names[count.index]}\"/' /etc/watchup-agent/config.yaml",
       "systemctl start watchup-agent",
       "systemctl enable watchup-agent"

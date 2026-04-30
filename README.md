@@ -34,7 +34,7 @@ The agent integrates with the **WatchUp platform** (proprietary) but can be adap
 
 #### Linux & macOS:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/watchup/watchup-agent/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tomurashigaraki22/watchup-agent-v2/main/install.sh | bash
 ```
 
 #### Windows (PowerShell as Administrator):
