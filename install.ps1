@@ -1,10 +1,10 @@
 # WatchUp Agent Installation Script for Windows
-# Usage: iwr -useb https://raw.githubusercontent.com/watchup/watchup-agent/main/install.ps1 | iex
+# Usage: iwr -useb https://raw.githubusercontent.com/tomurashigaraki22/watchup-agent-v2/main/install.ps1 | iex
 
 $ErrorActionPreference = "Stop"
 
 # Configuration
-$REPO = "watchup/watchup-agent"
+$REPO = "tomurashigaraki22/watchup-agent-v2"
 $INSTALL_DIR = "$env:ProgramFiles\WatchUp\Agent"
 $CONFIG_DIR = "$env:ProgramData\WatchUp\Agent"
 $BINARY_NAME = "watchup-agent.exe"

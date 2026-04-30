@@ -13,7 +13,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-REPO="watchup/watchup-agent"
+REPO="tomurashigaraki22/watchup-agent-v2"
 INSTALL_DIR="/usr/local/bin"
 CONFIG_DIR="/etc/watchup-agent"
 SERVICE_DIR="/etc/systemd/system"
@@ -118,7 +118,7 @@ build_from_source() {
     
     echo -e "${BLUE}Cloning repository...${NC}"
     git clone "https://github.com/${REPO}.git"
-    cd watchup-agent
+    cd watchup-agent-v2
     
     # Build
     echo -e "${BLUE}Building binary...${NC}"
