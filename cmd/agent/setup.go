@@ -15,6 +15,36 @@ func setupServerID(cfg *config.Config) error {
 		return nil // Already configured
 	}
 
+	// Check if running in non-interactive mode (e.g., systemd service)
+	fileInfo, _ := os.Stdin.Stat()
+	isInteractive := (fileInfo.Mode() & os.ModeCharDevice) != 0
+
+	if !isInteractive {
+		// Running as a service or in non-interactive mode
+		fmt.Println()
+		fmt.Println("❌ Server ID Configuration Required")
+		fmt.Println()
+		fmt.Println("The agent cannot start because 'server_id' is not configured.")
+		fmt.Println()
+		fmt.Println("To configure the server ID:")
+		fmt.Println("   1. Edit the config file:")
+		fmt.Println("      sudo nano /etc/watchup-agent/config.yaml")
+		fmt.Println()
+		fmt.Println("   2. Set the 'server_id' field to a unique identifier:")
+		fmt.Println("      server_id: \"web-prod-01\"")
+		fmt.Println()
+		fmt.Println("   3. Restart the agent:")
+		fmt.Println("      sudo systemctl restart watchup-agent")
+		fmt.Println()
+		fmt.Println("📋 Server ID Guidelines:")
+		fmt.Println("   • Must be unique within your WatchUp account")
+		fmt.Println("   • Use descriptive names like: web-prod-01, db-server-main, api-gateway-1")
+		fmt.Println("   • 3-50 characters, alphanumeric and hyphens only")
+		fmt.Println()
+		return fmt.Errorf("server_id not configured - please edit config.yaml")
+	}
+
+	// Interactive mode - prompt for input
 	fmt.Println()
 	fmt.Println("🔧 Server ID Setup Required")
 	fmt.Println("Your agent needs a unique server identifier.")
