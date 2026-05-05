@@ -105,6 +105,7 @@ func PollForToken(baseURL, deviceCode string, interval time.Duration, maxDuratio
 			return "", fmt.Errorf("failed to check status: %w", err)
 		}
 
+		// Read response body for debugging
 		var status StatusResponse
 		err = json.NewDecoder(resp.Body).Decode(&status)
 		resp.Body.Close()
@@ -113,8 +114,16 @@ func PollForToken(baseURL, deviceCode string, interval time.Duration, maxDuratio
 			return "", fmt.Errorf("failed to decode status response: %w", err)
 		}
 
+		// Log the status for debugging
+		if status.Status == "" {
+			return "", fmt.Errorf("backend returned empty status (HTTP %d)", resp.StatusCode)
+		}
+
 		switch status.Status {
 		case "approved":
+			if status.AccessToken == "" {
+				return "", fmt.Errorf("approved but no access token provided")
+			}
 			return status.AccessToken, nil
 		case "denied":
 			return "", fmt.Errorf("device linking was denied by user")
@@ -125,7 +134,7 @@ func PollForToken(baseURL, deviceCode string, interval time.Duration, maxDuratio
 			time.Sleep(interval)
 			continue
 		default:
-			return "", fmt.Errorf("unknown status: %s", status.Status)
+			return "", fmt.Errorf("unknown status: '%s' (expected: pending, approved, denied, or expired)", status.Status)
 		}
 	}
 }

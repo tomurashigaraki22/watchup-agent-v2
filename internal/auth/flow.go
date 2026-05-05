@@ -77,10 +77,13 @@ func (af *AuthFlow) performDeviceLinking() (string, error) {
 
 // displayLinkingInstructions shows the user how to link the device
 func (af *AuthFlow) displayLinkingInstructions(resp *DeviceCodeResponse) {
+	// Override verification URL to use the correct domain
+	verificationURL := "https://v2.watchup.site/agent-link"
+	
 	fmt.Println()
 	fmt.Println("🔗 Link this agent to your Watchup account:")
 	fmt.Println()
-	fmt.Printf("   Visit: %s?code=%s\n", resp.VerificationURL, resp.UserCode)
+	fmt.Printf("   Visit: %s?code=%s\n", verificationURL, resp.UserCode)
 	fmt.Println()
 	fmt.Printf("   Code expires in %d minutes\n", resp.ExpiresIn/60)
 	fmt.Println()

@@ -67,10 +67,27 @@ func ValidateTokenFormat(token string) error {
 		return fmt.Errorf("token is empty")
 	}
 
-	// Basic JWT format check (should have 3 parts separated by dots)
+	// Token must be at least 20 characters for security
+	if len(token) < 20 {
+		return fmt.Errorf("token is too short (minimum 20 characters)")
+	}
+
+	// Accept both JWT format (xxx.yyy.zzz) and plain tokens (random string)
+	// JWT format check
 	parts := strings.Split(token, ".")
-	if len(parts) != 3 {
-		return fmt.Errorf("token does not appear to be a valid JWT")
+	if len(parts) == 3 {
+		// Valid JWT format
+		return nil
+	}
+
+	// Plain token format - just check it's alphanumeric
+	for _, char := range token {
+		if !((char >= 'a' && char <= 'z') || 
+			 (char >= 'A' && char <= 'Z') || 
+			 (char >= '0' && char <= '9') ||
+			 char == '-' || char == '_') {
+			return fmt.Errorf("token contains invalid characters")
+		}
 	}
 
 	return nil
